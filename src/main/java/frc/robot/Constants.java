@@ -19,6 +19,9 @@ public final class Constants {
     public static final int BACK_LEFT_TALON = 2;
     public static final int FRONT_RIGHT_TALON = 3;
     public static final int BACK_RIGHT_TALON = 1;
+    public static final int ROTATIONAL_CONSTANT = 1024;
+    public static final int AUTO_DISTANCE = 20;
+        // in inches
 
     //Controllers
     public static final int CONTROLLER = 1;
