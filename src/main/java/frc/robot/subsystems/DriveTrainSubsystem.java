@@ -13,17 +13,12 @@ import frc.robot.Constants;
 public class DriveTrainSubsystem extends SubsystemBase {
   /** Creates a new DriveTrainSubsystem. */
 
-  final TalonFX frontLeftTalon;
-  final TalonFX backLeftTalon;
-  final TalonFX frontRightTalon;
-  final TalonFX backRightTalon;
+  final TalonFX frontLeftTalon = new TalonFX(Constants.FRONT_LEFT_TALON);
+  final TalonFX backLeftTalon = new TalonFX(Constants.BACK_LEFT_TALON);
+  final TalonFX frontRightTalon = new TalonFX(Constants.FRONT_RIGHT_TALON);
+  final TalonFX backRightTalon = new TalonFX(Constants.BACK_RIGHT_TALON);
 
   public DriveTrainSubsystem() {
-
-    frontLeftTalon = new TalonFX(Constants.FRONT_LEFT_TALON);
-    backLeftTalon = new TalonFX(Constants.BACK_LEFT_TALON);
-    frontRightTalon = new TalonFX(Constants.FRONT_RIGHT_TALON);
-    backRightTalon = new TalonFX(Constants.BACK_RIGHT_TALON);
 
     frontLeftTalon.setInverted(true);
     backLeftTalon.setInverted(false);
@@ -68,7 +63,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   // Teleop Section
   public void moveMotor( double speed, TalonFX talon) {
 
-    talon.set(ControlMode.PercentOutput, 0.5);
+    talon.set(ControlMode.PercentOutput, speed);
 
   }
 
