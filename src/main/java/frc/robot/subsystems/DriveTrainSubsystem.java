@@ -35,7 +35,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   }
 
   public void autoSpin() {
-    if ( frontLeftTalon.getSelectedSensorPosition() <= Constants.ROTATIONAL_CONSTANT * Constants.AUTO_DISTANCE) {
+    if ( frontLeftTalon.getSelectedSensorPosition() <= ( Constants.ROTATIONAL_CONSTANT / 2 ) * Constants.AUTO_DISTANCE) {
       spinMotor();
     } else {
       stopMotor();
@@ -74,11 +74,11 @@ public class DriveTrainSubsystem extends SubsystemBase {
     moveMotor( (X - Y - R), frontRightTalon );
     moveMotor( (X + Y - R), backRightTalon );
 
-    System.out.println( "Talon Velocity: " + frontLeftTalon.getSelectedSensorVelocity());
-    System.out.println( "Talon Position: " + frontLeftTalon.getSelectedSensorPosition());
+    System.out.println( "Talon Velocity: " + ( frontLeftTalon.getSelectedSensorVelocity() / Constants.ROTATIONAL_CONSTANT ) );
+    System.out.println( "Talon Position: " + ( frontLeftTalon.getSelectedSensorPosition() / Constants.ROTATIONAL_CONSTANT ) );
 
-    SmartDashboard.putNumber("Talon 4 Velocity", frontLeftTalon.getSelectedSensorVelocity());
-    SmartDashboard.putNumber("Talon 4 Position", frontLeftTalon.getSelectedSensorPosition());
+    SmartDashboard.putNumber("Talon 4 Velocity", ( frontLeftTalon.getSelectedSensorVelocity() / Constants.ROTATIONAL_CONSTANT ) );
+    SmartDashboard.putNumber("Talon 4 Position", ( frontLeftTalon.getSelectedSensorPosition() / Constants.ROTATIONAL_CONSTANT ) );
 
   }
 

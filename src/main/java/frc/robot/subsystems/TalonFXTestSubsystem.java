@@ -42,8 +42,8 @@ public class TalonFXTestSubsystem extends SubsystemBase {
     
     testTalon.set(ControlMode.PercentOutput, 0.5);
 
-    SmartDashboard.putNumber("Test Talon Velocity", testTalon.getSelectedSensorVelocity());
-    SmartDashboard.putNumber("Test Talon Position", testTalon.getSelectedSensorPosition());
+    SmartDashboard.putNumber("Test Talon Velocity", ( testTalon.getSelectedSensorVelocity() / Constants.ROTATIONAL_CONSTANT ) );
+    SmartDashboard.putNumber("Test Talon Position", ( testTalon.getSelectedSensorPosition() / Constants.ROTATIONAL_CONSTANT ) );
     
 
   }
