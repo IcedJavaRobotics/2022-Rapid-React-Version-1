@@ -21,9 +21,9 @@ public class DriveTrainSubsystem extends SubsystemBase {
   public DriveTrainSubsystem() {
 
     frontLeftTalon.setInverted(true);
-    backLeftTalon.setInverted(false);
+    backLeftTalon.setInverted(true);
     frontRightTalon.setInverted(true);
-    backRightTalon.setInverted(false);
+    backRightTalon.setInverted(true);
 
   }
 

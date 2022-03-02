@@ -15,10 +15,10 @@ package frc.robot;
 public final class Constants {
 
     //DriveTrain
-    public static final int FRONT_LEFT_TALON = 4;
+    public static final int FRONT_LEFT_TALON = 3;
     public static final int BACK_LEFT_TALON = 2;
-    public static final int FRONT_RIGHT_TALON = 3;
-    public static final int BACK_RIGHT_TALON = 1;
+    public static final int FRONT_RIGHT_TALON = 1;
+    public static final int BACK_RIGHT_TALON = 4;
     public static final int ROTATIONAL_CONSTANT = 2048;
     public static final int AUTO_DISTANCE = 20;
         // in inches
