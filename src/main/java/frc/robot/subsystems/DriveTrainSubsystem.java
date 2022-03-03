@@ -69,10 +69,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
   public void mecanumDrive( double R, double Y, double X) {
 
-    moveMotor( (X + Y + R), frontLeftTalon );
-    moveMotor( (X - Y + R), backLeftTalon );
-    moveMotor( (X - Y - R), frontRightTalon );
-    moveMotor( (X + Y - R), backRightTalon );
+    moveMotor( (X * X) + (Y * Y) + (R * R), frontLeftTalon );
+    moveMotor( (X * X) - (Y * Y) + (R * R), backLeftTalon );
+    moveMotor( (X * X) - (Y * Y) - (R * R), frontRightTalon );
+    moveMotor( (X * X) + (Y * Y) - (R * R), backRightTalon );
 
     System.out.println( "Talon Velocity: " + ( frontLeftTalon.getSelectedSensorVelocity() / Constants.ROTATIONAL_CONSTANT ) );
     System.out.println( "Talon Position: " + ( frontLeftTalon.getSelectedSensorPosition() / Constants.ROTATIONAL_CONSTANT ) );

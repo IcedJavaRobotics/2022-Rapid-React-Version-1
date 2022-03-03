@@ -41,4 +41,9 @@ public final class Constants {
     public static final int LEFT_INTAKE = 6;
     public static final double INTAKE_SPEED = 0.4;
 
+    //Shooter
+    public static final int BLINKIN_SPARK = 0;          //blinkin
+    public static final int SHOOTER_MOTOR = 9;          //tbd
+    public static final double SHOOTER_SPEED = 0.2;
+
 }

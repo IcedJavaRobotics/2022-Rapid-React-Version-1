@@ -8,12 +8,15 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.ShooterCommand;
 import frc.robot.commands.ArmsUpCommand;
+import frc.robot.commands.BlinkinCommand;
 import frc.robot.commands.ArmsDownCommand;
 import frc.robot.commands.TalonFXTestCommand;
 import frc.robot.commands.VictorTestCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ArmsSubsystem;
 import frc.robot.subsystems.TalonFXTestSubsystem;
 import frc.robot.subsystems.VictorTestSubsystem;
@@ -35,6 +38,7 @@ public class RobotContainer {
   private final VictorTestSubsystem victorTestSubsystem = new VictorTestSubsystem();
   private final TalonFXTestSubsystem talonFXTestSubsystem = new TalonFXTestSubsystem();
   private final ArmsSubsystem intakeSubsystem = new ArmsSubsystem();
+  private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
 
   XboxController xboxController = new XboxController(Constants.CONTROLLER);
   Joystick flightStick = new Joystick(Constants.JOYSTICK);
@@ -59,6 +63,12 @@ public class RobotContainer {
 
       new JoystickButton(flightStick, 4)
       .whileHeld(new ArmsDownCommand(intakeSubsystem));
+
+      new JoystickButton(flightStick, 12) //Fill in number right now
+      .whileHeld(new BlinkinCommand(shooterSubsystem));
+
+      new JoystickButton(flightStick, 1) //1 is the trigger
+      .whileHeld(new ShooterCommand(shooterSubsystem));
 
     }
 
