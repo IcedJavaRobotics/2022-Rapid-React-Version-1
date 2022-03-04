@@ -33,8 +33,8 @@ public class ArmsSubsystem extends SubsystemBase {
     if (Math.abs(leftPosition - rightPosition) > 5) {
       System.out.println("problem occured, arms not synced");
     }
-    rightArmMotor = new VictorSPX(Constants.RIGHT_INTAKE);
-    leftArmMotor = new VictorSPX(Constants.LEFT_INTAKE);
+    rightArmMotor = new VictorSPX(Constants.RIGHT_ARM);
+    leftArmMotor = new VictorSPX(Constants.LEFT_ARM);
 
     rightArmMotor.setInverted(true);
     leftArmMotor.setInverted(false);

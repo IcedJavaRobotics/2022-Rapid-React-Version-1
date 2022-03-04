@@ -37,9 +37,12 @@ public final class Constants {
     public static final int TESTTALONFX = 8;
 
     //Intake
-    public static final int RIGHT_INTAKE = 5;
-    public static final int LEFT_INTAKE = 6;
-    public static final double INTAKE_SPEED = 0.4;
+    public static final int INTAKE_VICTOR = 8;
+    public static final double INTAKE_SPEED = 0.5;
+
+    //Arms
+    public static final int LEFT_ARM = 5;
+    public static final int RIGHT_ARM = 6;
 
     //Shooter
     public static final int BLINKIN_SPARK = 0;          //blinkin
