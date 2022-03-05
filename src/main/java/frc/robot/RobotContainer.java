@@ -16,15 +16,11 @@ import frc.robot.commands.BlinkinCommand;
 import frc.robot.commands.ElevatorDownCommand;
 import frc.robot.commands.ElevatorUpCommand;
 import frc.robot.commands.ArmsDownCommand;
-import frc.robot.commands.TalonFXTestCommand;
-import frc.robot.commands.VictorTestCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ArmsSubsystem;
-import frc.robot.subsystems.TalonFXTestSubsystem;
-import frc.robot.subsystems.VictorTestSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -39,8 +35,6 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
   private final DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
-  private final VictorTestSubsystem victorTestSubsystem = new VictorTestSubsystem();
-  private final TalonFXTestSubsystem talonFXTestSubsystem = new TalonFXTestSubsystem();
   private final ArmsSubsystem armsSubsystem = new ArmsSubsystem();
   private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
@@ -60,9 +54,6 @@ public class RobotContainer {
       
       new JoystickButton(flightStick, 1) //1 is the trigger
       .whileHeld(new ShooterCommand(shooterSubsystem));
-      
-      new JoystickButton(flightStick, 2)
-      .whileHeld(new TalonFXTestCommand(talonFXTestSubsystem));
 
       new JoystickButton(flightStick, 3)
       .whileHeld(new OuttakeCommand(intakeSubsystem));
@@ -83,12 +74,7 @@ public class RobotContainer {
       .whileHeld(new ElevatorDownCommand(elevatorSubsystem));
 
       new JoystickButton(flightStick, 11) //Fill in number right now
-      .whileHeld(new BlinkinCommand(shooterSubsystem));
-
-      new JoystickButton(flightStick, 12)
-      .whileHeld(new VictorTestCommand(victorTestSubsystem));
-
-      
+      .whileHeld(new BlinkinCommand(shooterSubsystem));      
 
     }
 
