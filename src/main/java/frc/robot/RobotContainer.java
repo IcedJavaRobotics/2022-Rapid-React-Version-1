@@ -15,7 +15,6 @@ import frc.robot.commands.ArmsDownCommand;
 import frc.robot.commands.TalonFXTestCommand;
 import frc.robot.commands.VictorTestCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
-import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ArmsSubsystem;
 import frc.robot.subsystems.TalonFXTestSubsystem;
@@ -34,7 +33,6 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
 
   private final DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final VictorTestSubsystem victorTestSubsystem = new VictorTestSubsystem();
   private final TalonFXTestSubsystem talonFXTestSubsystem = new TalonFXTestSubsystem();
   private final ArmsSubsystem intakeSubsystem = new ArmsSubsystem();
