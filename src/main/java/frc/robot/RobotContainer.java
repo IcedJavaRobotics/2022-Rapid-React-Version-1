@@ -89,7 +89,7 @@ public class RobotContainer {
     }
 
     driveTrainSubsystem.setDefaultCommand(
-      new RunCommand(() -> driveTrainSubsystem.mecanumDrive(getJoystickX(), getJoystickY(), getJoystickTwist()), driveTrainSubsystem)
+      new RunCommand(() -> driveTrainSubsystem.mecanumDrive(getJoystickX(), getJoystickY(), getJoystickTwist(), flightStick.getThrottle()), driveTrainSubsystem)
     );
 
   }

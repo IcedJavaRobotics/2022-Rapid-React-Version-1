@@ -46,10 +46,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
   public void spinMotor() {
 
-    frontLeftTalon.set(ControlMode.PercentOutput, 0.5);
-    backLeftTalon.set(ControlMode.PercentOutput, 0.5);
-    frontRightTalon.set(ControlMode.PercentOutput, 0.5);
-    backLeftTalon.set(ControlMode.PercentOutput, 0.5);
+    frontLeftTalon.set(ControlMode.Velocity, Constants.ROTATIONAL_CONSTANT * 0.5);
+    backLeftTalon.set(ControlMode.Velocity, Constants.ROTATIONAL_CONSTANT * 0.5);
+    frontRightTalon.set(ControlMode.Velocity, Constants.ROTATIONAL_CONSTANT * 0.5);
+    backLeftTalon.set(ControlMode.Velocity, Constants.ROTATIONAL_CONSTANT * 0.5);
 
   }
 
@@ -69,12 +69,14 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
   }
 
-  public void mecanumDrive( double R, double Y, double X) {
+  public void mecanumDrive( double R, double Y, double X, double Z) {
 
-    moveMotor( ((X / Math.abs(X)) * (X * X)) + ((Y / Math.abs(Y)) * (Y * Y)) + ((R / Math.abs(R)) * (R * R)), frontLeftTalon );
-    moveMotor( ((X / Math.abs(X)) * (X * X)) - ((Y / Math.abs(Y)) * (Y * Y)) + ((R / Math.abs(R)) * (R * R)), backLeftTalon );
-    moveMotor( ((X / Math.abs(X)) * (X * X)) - ((Y / Math.abs(Y)) * (Y * Y)) - ((R / Math.abs(R)) * (R * R)), frontRightTalon );
-    moveMotor( ((X / Math.abs(X)) * (X * X)) + ((Y / Math.abs(Y)) * (Y * Y)) - ((R / Math.abs(R)) * (R * R)), backRightTalon );
+    Z = ( Z*0.4 ) + 0.6;
+
+    moveMotor( (Z * ((X / Math.abs(X)) * (X * X)) + ((Y / Math.abs(Y)) * (Y * Y)) + ((R / Math.abs(R)) * (R * R))), frontLeftTalon );
+    moveMotor( (Z * ((X / Math.abs(X)) * (X * X)) - ((Y / Math.abs(Y)) * (Y * Y)) + ((R / Math.abs(R)) * (R * R))), backLeftTalon );
+    moveMotor( (Z * ((X / Math.abs(X)) * (X * X)) - ((Y / Math.abs(Y)) * (Y * Y)) - ((R / Math.abs(R)) * (R * R))), frontRightTalon );
+    moveMotor( (Z * ((X / Math.abs(X)) * (X * X)) + ((Y / Math.abs(Y)) * (Y * Y)) - ((R / Math.abs(R)) * (R * R))), backRightTalon );
 
     System.out.println( "Talon Velocity: " + ( frontLeftTalon.getSelectedSensorVelocity() / Constants.ROTATIONAL_CONSTANT ) );
     System.out.println( "Talon Position: " + ( frontLeftTalon.getSelectedSensorPosition() / Constants.ROTATIONAL_CONSTANT ) );
