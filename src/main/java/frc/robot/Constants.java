@@ -53,4 +53,11 @@ public final class Constants {
     public static final int SHOOTER_VICTOR = 9;          //tbd
     public static final double SHOOTER_SPEED = 0.2;
 
+    //Climber
+    public static final int CLIMBER_LEFT_MOTOR = 8;
+    public static final int CLIMBER_RIGHT_MOTOR = 9;
+    public static final double CLIMBER_SPEED = 0.2;
+    public static final int CLIMBER_LEFT_LIMIT_SWITCH = 6;
+    public static final int CLIMBER_RIGHT_LIMIT_SWITCH = 7;
+
 }

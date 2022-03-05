@@ -13,6 +13,8 @@ import frc.robot.commands.OuttakeCommand;
 import frc.robot.commands.ShooterCommand;
 import frc.robot.commands.ArmsUpCommand;
 import frc.robot.commands.BlinkinCommand;
+import frc.robot.commands.ClimberDownCommand;
+import frc.robot.commands.ClimberUpCommand;
 import frc.robot.commands.ElevatorDownCommand;
 import frc.robot.commands.ElevatorUpCommand;
 import frc.robot.commands.ArmsDownCommand;
@@ -21,6 +23,7 @@ import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ArmsSubsystem;
+import frc.robot.subsystems.ClimberSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -39,6 +42,7 @@ public class RobotContainer {
   private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
   private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+  private final ClimberSubsystem climberSubsystem = new ClimberSubsystem();
 
   XboxController xboxController = new XboxController(Constants.CONTROLLER);
   Joystick flightStick = new Joystick(Constants.JOYSTICK);
@@ -66,6 +70,12 @@ public class RobotContainer {
 
       new JoystickButton(flightStick, 6)
       .whileHeld(new ArmsDownCommand(armsSubsystem));
+
+      new JoystickButton(flightStick, 7)
+      .whileHeld(new ClimberUpCommand(climberSubsystem));
+
+      new JoystickButton(flightStick, 8)
+      .whileHeld(new ClimberDownCommand(climberSubsystem));
 
       new JoystickButton(flightStick, 9)
       .whileHeld(new ElevatorUpCommand(elevatorSubsystem));
