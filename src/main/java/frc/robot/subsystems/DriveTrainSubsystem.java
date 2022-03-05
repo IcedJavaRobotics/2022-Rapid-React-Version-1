@@ -34,12 +34,14 @@ public class DriveTrainSubsystem extends SubsystemBase {
     
   }
 
-  public void autoSpin() {
-    if ( frontLeftTalon.getSelectedSensorPosition() <= ( Constants.ROTATIONAL_CONSTANT / 2 ) * Constants.AUTO_DISTANCE) {
+  public boolean autoSpin() {
+    if (frontLeftTalon.getSelectedSensorPosition() <= ( Constants.ROTATIONAL_CONSTANT / 2 ) * Constants.AUTO_DISTANCE) {
       spinMotor();
     } else {
       stopMotor();
+      return true;
     }
+    return false;
   }
 
   public void spinMotor() {

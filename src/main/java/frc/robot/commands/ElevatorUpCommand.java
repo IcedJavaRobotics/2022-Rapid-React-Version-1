@@ -5,18 +5,17 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ArmsSubsystem;
+import frc.robot.subsystems.ElevatorSubsystem;
 
-public class ArmsUpCommand extends CommandBase {
-  /** Creates a new OuttakeCommand. */
+public class ElevatorUpCommand extends CommandBase {
+  /** Creates a new ElevatorUpCommand. */
 
-  private final ArmsSubsystem intakeSubsystem;
+  private final ElevatorSubsystem elevatorSubsystem;
 
-  public ArmsUpCommand( ArmsSubsystem subsystem ) {
-    // Use addRequirements() here to declare subsystem dependencies.
+  public ElevatorUpCommand( ElevatorSubsystem subsystem ) {
 
-    intakeSubsystem = subsystem;
-    addRequirements( intakeSubsystem );
+    elevatorSubsystem = subsystem;
+    addRequirements( elevatorSubsystem );
 
   }
 
@@ -27,13 +26,17 @@ public class ArmsUpCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    intakeSubsystem.armsUp();
+
+    elevatorSubsystem.elevatorUp();
+
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    intakeSubsystem.armsStop();
+
+    elevatorSubsystem.elevatorStop();
+
   }
 
   // Returns true when the command should end.

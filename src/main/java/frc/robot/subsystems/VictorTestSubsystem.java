@@ -11,13 +11,9 @@ import frc.robot.Constants;
 public class VictorTestSubsystem extends SubsystemBase {
   /** Creates a new VictorTestSubsystem. */
 
-  final Victor testVictor;
+  final Victor testVictor = new Victor(Constants.TESTVICTOR);
   
-  public VictorTestSubsystem() {
-
-    testVictor = new Victor(Constants.TESTVICTOR);
-    
-  }
+  public VictorTestSubsystem() {}
 
   public void runVictor() {
 

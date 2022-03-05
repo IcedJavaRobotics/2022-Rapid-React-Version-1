@@ -20,7 +20,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public ShooterSubsystem() {
 
-    shooterMotor = new VictorSPX(Constants.SHOOTER_MOTOR);
+    shooterMotor = new VictorSPX(Constants.SHOOTER_VICTOR);
     shooterBlinkin = new Spark (Constants.BLINKIN_SPARK); //Declares that shooterBlinkin is a spark and gives it the port
     
   }
@@ -33,10 +33,17 @@ public class ShooterSubsystem extends SubsystemBase {
       
   }
 
+  public void autoShoot() {
+  
+    ballShoot();
+
+  }
+
   public void ballShoot() {
 
     shooterMotor.set(ControlMode.PercentOutput, Constants.SHOOTER_SPEED);
     shooterBlinkin.set(-0.99); //When the shooter activates it turns rainbow
+
   }
 
   public void shootStop() {

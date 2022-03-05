@@ -33,7 +33,7 @@ public class ArmsDownCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    intakeSubsystem.intakeStop();
+    intakeSubsystem.armsStop();
   }
 
   // Returns true when the command should end.

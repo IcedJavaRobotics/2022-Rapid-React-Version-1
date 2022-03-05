@@ -10,40 +10,33 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
-public class IntakeSubsystem extends SubsystemBase {
-  /** Creates a new IntakeSubsystem. */
+public class ElevatorSubsystem extends SubsystemBase {
+  /** Creates a new ElevatorSubsystem. */
+  
+  final VictorSPX elevatorVictor = new VictorSPX(Constants.ELEVATOR_VICTOR);
 
-  private VictorSPX intakeMotor;
+  public ElevatorSubsystem() {}
 
-  public IntakeSubsystem() {
+  public void elevatorUp() {
 
-    intakeMotor = new VictorSPX(Constants.INTAKE_VICTOR);
-
-  }
-
-  public void intake() {
-
-    intakeMotor.set(ControlMode.PercentOutput, Constants.INTAKE_SPEED);
+    elevatorVictor.set(ControlMode.PercentOutput, Constants.ELEVATOR_SPEED);
 
   }
 
-  public void outtake() {
+  public void elevatorDown() {
 
-    intakeMotor.set(ControlMode.PercentOutput, -Constants.INTAKE_SPEED);
-    
+    elevatorVictor.set(ControlMode.PercentOutput, - Constants.ELEVATOR_SPEED);
 
   }
 
-  public void intakeStop() {
+  public void elevatorStop() {
 
-    intakeMotor.set(ControlMode.PercentOutput, 0);
-    
+    elevatorVictor.set(ControlMode.PercentOutput, 0);
+
   }
-
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
 }
-

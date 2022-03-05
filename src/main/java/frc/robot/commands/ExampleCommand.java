@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
@@ -12,6 +13,7 @@ public class ExampleCommand extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   
   private final DriveTrainSubsystem m_subsystem;
+  private final ShooterSubsystem s_subsystem;
   // private final TalonFXTestSubsystem m_subsystem;
 
   /**
@@ -19,11 +21,13 @@ public class ExampleCommand extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleCommand(DriveTrainSubsystem subsystem) {
+  public ExampleCommand(DriveTrainSubsystem msubsystem, ShooterSubsystem ssubsystem) {
   // public ExampleCommand(TalonFXTestSubsystem subsystem) {
 
-    m_subsystem = subsystem;
-    addRequirements(subsystem);
+    m_subsystem = msubsystem;
+    s_subsystem = ssubsystem;
+    addRequirements(msubsystem);
+    addRequirements(ssubsystem);
 
   }
 
@@ -40,12 +44,22 @@ public class ExampleCommand extends CommandBase {
   public void execute() {
 
     m_subsystem.autoSpin();
+    s_subsystem.autoShoot();
+    if (m_subsystem.autoSpin() == true) {
 
+      
+
+    }
+    
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+
+    s_subsystem.shootStop();
+
+  }
 
   // Returns true when the command should end.
   @Override

@@ -8,13 +8,19 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.OuttakeCommand;
 import frc.robot.commands.ShooterCommand;
 import frc.robot.commands.ArmsUpCommand;
 import frc.robot.commands.BlinkinCommand;
+import frc.robot.commands.ElevatorDownCommand;
+import frc.robot.commands.ElevatorUpCommand;
 import frc.robot.commands.ArmsDownCommand;
 import frc.robot.commands.TalonFXTestCommand;
 import frc.robot.commands.VictorTestCommand;
 import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.subsystems.ElevatorSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.ArmsSubsystem;
 import frc.robot.subsystems.TalonFXTestSubsystem;
@@ -35,14 +41,16 @@ public class RobotContainer {
   private final DriveTrainSubsystem driveTrainSubsystem = new DriveTrainSubsystem();
   private final VictorTestSubsystem victorTestSubsystem = new VictorTestSubsystem();
   private final TalonFXTestSubsystem talonFXTestSubsystem = new TalonFXTestSubsystem();
-  private final ArmsSubsystem intakeSubsystem = new ArmsSubsystem();
+  private final ArmsSubsystem armsSubsystem = new ArmsSubsystem();
   private final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
+  private final ElevatorSubsystem elevatorSubsystem = new ElevatorSubsystem();
+  private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
 
   XboxController xboxController = new XboxController(Constants.CONTROLLER);
   Joystick flightStick = new Joystick(Constants.JOYSTICK);
 
   // private final ExampleCommand m_autoCommand = new ExampleCommand(talonFXTestSubsystem);
-  private final ExampleCommand m_autoCommand = new ExampleCommand(driveTrainSubsystem);
+  private final ExampleCommand m_autoCommand = new ExampleCommand(driveTrainSubsystem, shooterSubsystem);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -50,23 +58,37 @@ public class RobotContainer {
 
     configureButtonBindings(); {
       
-      new JoystickButton(flightStick, 5)
-      .whileHeld(new VictorTestCommand(victorTestSubsystem));
-
-      new JoystickButton(flightStick, 7)
-      .whileHeld(new TalonFXTestCommand(talonFXTestSubsystem));
-
-      new JoystickButton(flightStick, 6)
-      .whileHeld(new ArmsUpCommand(intakeSubsystem));
-
-      new JoystickButton(flightStick, 4)
-      .whileHeld(new ArmsDownCommand(intakeSubsystem));
-
-      new JoystickButton(flightStick, 12) //Fill in number right now
-      .whileHeld(new BlinkinCommand(shooterSubsystem));
-
       new JoystickButton(flightStick, 1) //1 is the trigger
       .whileHeld(new ShooterCommand(shooterSubsystem));
+      
+      new JoystickButton(flightStick, 2)
+      .whileHeld(new TalonFXTestCommand(talonFXTestSubsystem));
+
+      new JoystickButton(flightStick, 3)
+      .whileHeld(new OuttakeCommand(intakeSubsystem));
+
+      new JoystickButton(flightStick, 4)
+      .whileHeld(new ArmsUpCommand(armsSubsystem));
+
+      new JoystickButton(flightStick, 5)
+      .whileHeld(new IntakeCommand(intakeSubsystem));
+
+      new JoystickButton(flightStick, 6)
+      .whileHeld(new ArmsDownCommand(armsSubsystem));
+
+      new JoystickButton(flightStick, 9)
+      .whileHeld(new ElevatorUpCommand(elevatorSubsystem));
+
+      new JoystickButton(flightStick, 10)
+      .whileHeld(new ElevatorDownCommand(elevatorSubsystem));
+
+      new JoystickButton(flightStick, 11) //Fill in number right now
+      .whileHeld(new BlinkinCommand(shooterSubsystem));
+
+      new JoystickButton(flightStick, 12)
+      .whileHeld(new VictorTestCommand(victorTestSubsystem));
+
+      
 
     }
 

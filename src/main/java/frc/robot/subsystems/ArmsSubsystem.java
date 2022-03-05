@@ -86,7 +86,7 @@ public class ArmsSubsystem extends SubsystemBase {
     
   }
 
-  public void intakeStop() {
+  public void armsStop() {
 
     rightArmMotor.set(ControlMode.PercentOutput, 0);
     leftArmMotor.set(ControlMode.PercentOutput, 0);

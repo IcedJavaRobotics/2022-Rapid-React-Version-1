@@ -44,9 +44,13 @@ public final class Constants {
     public static final int LEFT_ARM = 5;
     public static final int RIGHT_ARM = 6;
 
+    //Elevator
+    public static final int ELEVATOR_VICTOR = 10;
+    public static final double ELEVATOR_SPEED = 0.2;
+
     //Shooter
     public static final int BLINKIN_SPARK = 0;          //blinkin
-    public static final int SHOOTER_MOTOR = 9;          //tbd
+    public static final int SHOOTER_VICTOR = 9;          //tbd
     public static final double SHOOTER_SPEED = 0.2;
 
 }
