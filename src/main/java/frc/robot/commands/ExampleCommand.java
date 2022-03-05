@@ -4,8 +4,8 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.DriveTrainSubsystem;
+import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
@@ -15,7 +15,7 @@ public class ExampleCommand extends CommandBase {
   
   private final DriveTrainSubsystem m_subsystem;
   private final ShooterSubsystem s_subsystem;
-  private final ClimberSubsystem c_subsystem;
+  private final ElevatorSubsystem e_subsystem;
   // private final TalonFXTestSubsystem m_subsystem;
 
   /**
@@ -23,15 +23,15 @@ public class ExampleCommand extends CommandBase {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleCommand(DriveTrainSubsystem msubsystem, ShooterSubsystem ssubsystem, ClimberSubsystem csubsystem) {
+  public ExampleCommand(DriveTrainSubsystem msubsystem, ShooterSubsystem ssubsystem, ElevatorSubsystem esubsystem) {
   // public ExampleCommand(TalonFXTestSubsystem subsystem) {
 
     m_subsystem = msubsystem;
     s_subsystem = ssubsystem;
-    c_subsystem = csubsystem;
+    e_subsystem = esubsystem;
     addRequirements(msubsystem);
     addRequirements(ssubsystem);
-    addRequirements(csubsystem);
+    addRequirements(esubsystem);
 
   }
 
@@ -50,7 +50,7 @@ public class ExampleCommand extends CommandBase {
     m_subsystem.autoSpin();
     s_subsystem.autoShoot();
     if (m_subsystem.autoSpin() == true) {
-      c_subsystem.climberUp();
+      e_subsystem.elevatorUp();
     }
     
   }
@@ -60,7 +60,7 @@ public class ExampleCommand extends CommandBase {
   public void end(boolean interrupted) {
 
     s_subsystem.shootStop();
-    c_subsystem.climberStop();
+    e_subsystem.elevatorStop();
 
   }
 

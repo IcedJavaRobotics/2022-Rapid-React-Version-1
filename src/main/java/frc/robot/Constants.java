@@ -14,6 +14,18 @@ package frc.robot;
  */
 public final class Constants {
 
+    // Buttons
+    public static final int ARMS_UP_BUTTON = 4;
+    public static final int ARMS_DOWN_BUTTON = 6;
+    public static final int OUTTAKE_BUTTON = 3;
+    public static final int INTAKE_BUTTON = 5;
+    public static final int ELEVATOR_UP_BUTTON = 9;
+    public static final int ELEVATOR_DOWN_BUTTON = 10;
+    public static final int SHOOTER_BUTTON = 1;
+    public static final int CLIMBER_UP_BUTTON = 7;
+    public static final int CLIMBER_DOWN_BUTTON = 8;
+    public static final int BLINKIN_BUTTON = 11;
+
     //DriveTrain
     public static final int FRONT_LEFT_TALON = 3;
     public static final int BACK_LEFT_TALON = 2;
