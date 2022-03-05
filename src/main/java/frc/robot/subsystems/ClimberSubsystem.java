@@ -26,7 +26,7 @@ public class ClimberSubsystem extends SubsystemBase {
     climberRightMotor = new TalonSRX(Constants.CLIMBER_RIGHT_MOTOR);
   }
 
-  public void ClimberUp(){
+  public void climberUp(){
     if(climberLeftMotor.getSelectedSensorPosition()<= 5000){
       climberLeftMotor.set(ControlMode.PercentOutput, Constants.CLIMBER_SPEED);
     }else{
@@ -39,7 +39,7 @@ public class ClimberSubsystem extends SubsystemBase {
     }
   }
 
-  public void ClimberDown(){
+  public void climberDown(){
     if(climberLeftLimitSwitch.get() == false) {
       climberLeftMotor.set(ControlMode.PercentOutput, Constants.CLIMBER_SPEED);
     }else{
@@ -54,7 +54,7 @@ public class ClimberSubsystem extends SubsystemBase {
     }
   }
 
-  public void ClimberStop(){
+  public void climberStop(){
     climberLeftMotor.set(ControlMode.PercentOutput, 0);
     climberRightMotor.set(ControlMode.PercentOutput, 0);
   }

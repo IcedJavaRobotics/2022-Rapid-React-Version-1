@@ -48,7 +48,7 @@ public class RobotContainer {
   Joystick flightStick = new Joystick(Constants.JOYSTICK);
 
   // private final ExampleCommand m_autoCommand = new ExampleCommand(talonFXTestSubsystem);
-  private final ExampleCommand m_autoCommand = new ExampleCommand(driveTrainSubsystem, shooterSubsystem);
+  private final ExampleCommand m_autoCommand = new ExampleCommand(driveTrainSubsystem, shooterSubsystem, climberSubsystem);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
