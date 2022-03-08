@@ -89,7 +89,7 @@ public class RobotContainer {
     }
 
     driveTrainSubsystem.setDefaultCommand(
-      new RunCommand(() -> driveTrainSubsystem.mecanumDrive(getJoystickX(), getJoystickY(), getJoystickTwist(), flightStick.getThrottle()), driveTrainSubsystem)
+      new RunCommand(() -> driveTrainSubsystem.mecanumDrive(getJoystickX(), getJoystickY(), getJoystickTwist()), driveTrainSubsystem)
     );
 
   }
@@ -98,7 +98,7 @@ public class RobotContainer {
     if (Math.abs(val) <= Constants.DEADZONE) {
       return 0;
     } else {
-      return ((val -0.2) * 1.25) ;
+      return ((Math.abs(val) - 0.2) * 1.25) * (val/Math.abs(val));
     }
   }
 

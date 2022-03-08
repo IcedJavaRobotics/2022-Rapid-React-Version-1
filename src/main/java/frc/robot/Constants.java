@@ -32,8 +32,10 @@ public final class Constants {
     public static final int FRONT_RIGHT_TALON = 1;
     public static final int BACK_RIGHT_TALON = 4;
     public static final int ROTATIONAL_CONSTANT = 2048;
-    public static final int AUTO_DISTANCE = 20;
-        // in inches
+    public static final double RAMP_UP_TIME = 3;                // in seconds
+    public static final int AUTO_DISTANCE_FORWARD = 30;         // in inches
+    public static final int AUTO_DISTANCE_BACKWARDS = 30;       // in inches
+    public static final double ELEVATOR_TIME = 5;               // in seconds
 
     //Controllers
     public static final int CONTROLLER = 1;
@@ -41,15 +43,8 @@ public final class Constants {
         // ^ these indicate the spot used on the driverstation ^
     public static final double DEADZONE = 0.2;
 
-    //Test Victor
-    public static final int TESTVICTOR = 7;
-    public static final double VICTOR_SPEED = 0.2;
-
-    //Test TalonFX
-    public static final int TESTTALONFX = 8;
-
     //Intake
-    public static final int INTAKE_VICTOR = 8;
+    public static final int INTAKE_VICTOR = 11;
     public static final double INTAKE_SPEED = 0.5;
 
     //Arms
@@ -62,7 +57,7 @@ public final class Constants {
 
     //Shooter
     public static final int BLINKIN_SPARK = 0;          //blinkin
-    public static final int SHOOTER_VICTOR = 9;          //tbd
+    public static final int SHOOTER_VICTOR = 7;          //tbd
     public static final double SHOOTER_SPEED = 0.2;
 
     //Climber

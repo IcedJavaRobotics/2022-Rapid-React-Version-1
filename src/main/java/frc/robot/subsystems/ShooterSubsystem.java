@@ -14,14 +14,13 @@ import frc.robot.Constants;
 
 public class ShooterSubsystem extends SubsystemBase {
   
-  private Spark shooterBlinkin;
-  final VictorSPX shooterMotor; 
+  private Spark shooterBlinkin = new Spark (Constants.BLINKIN_SPARK); //Declares that shooterBlinkin is a spark and gives it the port
+  final VictorSPX shooterMotor = new VictorSPX(Constants.SHOOTER_VICTOR);
   /** Creates a new ShooterSubsystem. */
 
   public ShooterSubsystem() {
 
-    shooterMotor = new VictorSPX(Constants.SHOOTER_VICTOR);
-    shooterBlinkin = new Spark (Constants.BLINKIN_SPARK); //Declares that shooterBlinkin is a spark and gives it the port
+    shooterMotor.setInverted(true);
     
   }
     

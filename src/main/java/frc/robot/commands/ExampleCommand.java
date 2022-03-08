@@ -4,9 +4,12 @@
 
 package frc.robot.commands;
 
+import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
@@ -16,6 +19,8 @@ public class ExampleCommand extends CommandBase {
   private final DriveTrainSubsystem m_subsystem;
   private final ShooterSubsystem s_subsystem;
   private final ElevatorSubsystem e_subsystem;
+  double time;
+  double x;
   // private final TalonFXTestSubsystem m_subsystem;
 
   /**
@@ -32,6 +37,7 @@ public class ExampleCommand extends CommandBase {
     addRequirements(msubsystem);
     addRequirements(ssubsystem);
     addRequirements(esubsystem);
+    x = 0;
 
   }
 
@@ -40,6 +46,7 @@ public class ExampleCommand extends CommandBase {
   public void initialize() {
 
     m_subsystem.zeroEncoder();
+    s_subsystem.autoBlinkin();
 
   }
 
@@ -47,11 +54,34 @@ public class ExampleCommand extends CommandBase {
   @Override
   public void execute() {
 
-    m_subsystem.autoSpin();
-    s_subsystem.autoShoot();
-    if (m_subsystem.autoSpin() == true) {
-      e_subsystem.elevatorUp();
+    if (x == 0 ) {
+      m_subsystem.autoForward();
+      s_subsystem.autoShoot();
+      System.out.println("a");
     }
+
+    if (m_subsystem.autoForward() == true) {
+      e_subsystem.elevatorUp();
+      x = x + 1;
+      System.out.println("b,1");
+      System.out.println(x);
+      SmartDashboard.putNumber("X equals", x);
+    }
+
+    if ( x == 1 ) {
+      time = Timer.getMatchTime();
+      System.out.println("c,2");
+      SmartDashboard.putNumber("time equals", time);
+    }
+
+    if ( x >= 1) {
+      if (Timer.getMatchTime() + Constants.ELEVATOR_TIME <= time ) {
+        e_subsystem.elevatorStop();
+        m_subsystem.autoReverse();
+        System.out.println("d,3");
+      }
+    }
+    SmartDashboard.putNumber("Match time equals", Timer.getMatchTime());
     
   }
 
