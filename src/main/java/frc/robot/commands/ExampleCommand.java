@@ -76,7 +76,7 @@ public class ExampleCommand extends CommandBase {
 
     if ( x >= 1) {
       if (Timer.getMatchTime() + Constants.ELEVATOR_TIME <= time ) {
-        e_subsystem.elevatorStop();
+        // e_subsystem.elevatorStop();
         m_subsystem.autoReverse();
         System.out.println("d,3");
       }
