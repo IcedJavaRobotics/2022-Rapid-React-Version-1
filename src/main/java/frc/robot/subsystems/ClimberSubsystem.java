@@ -41,13 +41,13 @@ public class ClimberSubsystem extends SubsystemBase {
 
   public void climberDown(){
     if(climberLeftLimitSwitch.get() == false) {
-      climberLeftMotor.set(ControlMode.PercentOutput, Constants.CLIMBER_SPEED);
+      climberLeftMotor.set(ControlMode.PercentOutput, - Constants.CLIMBER_SPEED);
     }else{
       climberLeftMotor.set(ControlMode.PercentOutput, 0);
       climberLeftMotor.setSelectedSensorPosition(0);
     }
     if(climberRightLimitSwitch.get() == false) {
-      climberRightMotor.set(ControlMode.PercentOutput, Constants.CLIMBER_SPEED);
+      climberRightMotor.set(ControlMode.PercentOutput, - Constants.CLIMBER_SPEED);
     }else{
       climberRightMotor.set(ControlMode.PercentOutput, 0);
       climberRightMotor.setSelectedSensorPosition(0);

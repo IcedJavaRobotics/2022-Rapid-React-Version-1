@@ -54,7 +54,7 @@ public class ExampleCommand extends CommandBase {
   @Override
   public void execute() {
 
-    if (x == 0 ) {
+    if ( x == 0 ) {
       m_subsystem.autoForward();
       s_subsystem.autoShoot();
       System.out.println("a");
