@@ -25,7 +25,7 @@ public final class Constants {
     public static final int CLIMBER_UP_BUTTON = 7;
     public static final int CLIMBER_DOWN_BUTTON = 8;
     public static final int BLINKIN_BUTTON = 11;
-
+    
     //DriveTrain
     public static final int FRONT_LEFT_TALON = 3;
     public static final int BACK_LEFT_TALON = 2;
@@ -38,8 +38,9 @@ public final class Constants {
     public static final double ELEVATOR_TIME = 5;               // in seconds
 
     //Controllers
-    public static final int CONTROLLER = 1;
+    //public static final int CONTROLLER = 1;
     public static final int JOYSTICK = 0;
+    public static final int JOYSTICK2 = 1;
         // ^ these indicate the spot used on the driverstation ^
     public static final double DEADZONE = 0.2;
 
