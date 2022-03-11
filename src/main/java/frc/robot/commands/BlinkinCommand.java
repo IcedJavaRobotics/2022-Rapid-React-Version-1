@@ -15,22 +15,22 @@ public class BlinkinCommand extends CommandBase {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements( ShooterSubsystem );
   }
-  int x = 0;
+  int b = 0;
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    x = x+1;        //x counts upwards each time the button is pressed
-      if(x == 1) {
+    b = b+1;        //x counts upwards each time the button is pressed
+      if(b == 1) {
       ShooterSubsystem.BlinkinBlueStart();      //First time button is pressed it's blue
       }
 
-      if(x == 2){
+      if(b == 2){
         ShooterSubsystem.BlinkinRedStart();   //Second time the button is pressed it's red
       }
 
-     if(x == 3){
+     if(b == 3){
       ShooterSubsystem.BlinkinEnd();        //Third time the button is pressed it ends.
-      x = 0;
+      b = 0;
      }
     
 

@@ -44,8 +44,10 @@ public class RobotContainer {
   private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   private final ClimberSubsystem climberSubsystem = new ClimberSubsystem();
 
-  XboxController xboxController = new XboxController(Constants.CONTROLLER);
+  //XboxController xboxController = new XboxController(Constants.CONTROLLER);
   Joystick flightStick = new Joystick(Constants.JOYSTICK);
+  Joystick flightStick2 = new Joystick(Constants.JOYSTICK2);
+  // Joystick driverStation = new Joystick(Constants.DRIVER_STATION);
 
   // private final ExampleCommand m_autoCommand = new ExampleCommand(talonFXTestSubsystem);
   private final ExampleCommand m_autoCommand = new ExampleCommand(driveTrainSubsystem, shooterSubsystem, elevatorSubsystem);

@@ -62,8 +62,8 @@ public class DriveTrainSubsystem extends SubsystemBase {
   public void spinMotorForward() {
 
     frontLeftTalon.set(ControlMode.PercentOutput, 0.5);
-    backLeftTalon.set(ControlMode.PercentOutput, 0.5);
-    frontRightTalon.set(ControlMode.PercentOutput, 0.5);
+    backLeftTalon.set(ControlMode.PercentOutput, -0.5);
+    frontRightTalon.set(ControlMode.PercentOutput, -0.5);
     backRightTalon.set(ControlMode.PercentOutput, 0.5);
 
     SmartDashboard.putNumber("Talon 4 Velocity", ( frontLeftTalon.getSelectedSensorVelocity() / Constants.ROTATIONAL_CONSTANT ) );
@@ -81,8 +81,8 @@ public class DriveTrainSubsystem extends SubsystemBase {
   public void spinMotorBackwards() {
 
     frontLeftTalon.set(ControlMode.PercentOutput, -0.5);
-    backLeftTalon.set(ControlMode.PercentOutput, -0.5);
-    frontRightTalon.set(ControlMode.PercentOutput, -0.5);
+    backLeftTalon.set(ControlMode.PercentOutput, 0.5);
+    frontRightTalon.set(ControlMode.PercentOutput, 0.5);
     backRightTalon.set(ControlMode.PercentOutput, -0.5);
 
     SmartDashboard.putNumber("Talon 4 Velocity", ( frontLeftTalon.getSelectedSensorVelocity() / Constants.ROTATIONAL_CONSTANT ) );

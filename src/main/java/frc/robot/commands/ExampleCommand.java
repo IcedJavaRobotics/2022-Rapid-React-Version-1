@@ -37,7 +37,6 @@ public class ExampleCommand extends CommandBase {
     addRequirements(msubsystem);
     addRequirements(ssubsystem);
     addRequirements(esubsystem);
-    x = 0;
 
   }
 
@@ -47,6 +46,7 @@ public class ExampleCommand extends CommandBase {
 
     m_subsystem.zeroEncoder();
     s_subsystem.autoBlinkin();
+    x = 0;
 
   }
 
@@ -82,6 +82,7 @@ public class ExampleCommand extends CommandBase {
       }
     }
     SmartDashboard.putNumber("Match time equals", Timer.getMatchTime());
+    System.out.println(x);
     
   }
 

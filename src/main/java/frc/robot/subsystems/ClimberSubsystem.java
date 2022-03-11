@@ -16,17 +16,18 @@ import frc.robot.Constants;
 public class ClimberSubsystem extends SubsystemBase {
   /** Creates a new ClimberSubsystem. */
   
-  private TalonSRX climberLeftMotor;
-  private TalonSRX climberRightMotor;
+  //private TalonSRX climberLeftMotor;
+  //private TalonSRX climberRightMotor;
   DigitalInput climberLeftLimitSwitch = new DigitalInput(Constants.CLIMBER_LEFT_LIMIT_SWITCH);
   DigitalInput climberRightLimitSwitch = new DigitalInput(Constants.CLIMBER_RIGHT_LIMIT_SWITCH);
 
   public ClimberSubsystem() {
-    climberLeftMotor = new TalonSRX(Constants.CLIMBER_LEFT_MOTOR);
-    climberRightMotor = new TalonSRX(Constants.CLIMBER_RIGHT_MOTOR);
+    //climberLeftMotor = new TalonSRX(Constants.CLIMBER_LEFT_MOTOR);
+    //climberRightMotor = new TalonSRX(Constants.CLIMBER_RIGHT_MOTOR);
   }
 
   public void climberUp(){
+    /*
     if(climberLeftMotor.getSelectedSensorPosition()<= 5000){
       climberLeftMotor.set(ControlMode.PercentOutput, Constants.CLIMBER_SPEED);
     }else{
@@ -37,26 +38,27 @@ public class ClimberSubsystem extends SubsystemBase {
     }else{
       climberRightMotor.set(ControlMode.PercentOutput, 0);
     }
+    */
   }
 
   public void climberDown(){
     if(climberLeftLimitSwitch.get() == false) {
-      climberLeftMotor.set(ControlMode.PercentOutput, - Constants.CLIMBER_SPEED);
+      //climberLeftMotor.set(ControlMode.PercentOutput, - Constants.CLIMBER_SPEED);
     }else{
-      climberLeftMotor.set(ControlMode.PercentOutput, 0);
-      climberLeftMotor.setSelectedSensorPosition(0);
+      //climberLeftMotor.set(ControlMode.PercentOutput, 0);
+      //climberLeftMotor.setSelectedSensorPosition(0);
     }
     if(climberRightLimitSwitch.get() == false) {
-      climberRightMotor.set(ControlMode.PercentOutput, - Constants.CLIMBER_SPEED);
+      //climberRightMotor.set(ControlMode.PercentOutput, - Constants.CLIMBER_SPEED);
     }else{
-      climberRightMotor.set(ControlMode.PercentOutput, 0);
-      climberRightMotor.setSelectedSensorPosition(0);
+      //climberRightMotor.set(ControlMode.PercentOutput, 0);
+      //climberRightMotor.setSelectedSensorPosition(0);
     }
   }
 
   public void climberStop(){
-    climberLeftMotor.set(ControlMode.PercentOutput, 0);
-    climberRightMotor.set(ControlMode.PercentOutput, 0);
+    //climberLeftMotor.set(ControlMode.PercentOutput, 0);
+    //climberRightMotor.set(ControlMode.PercentOutput, 0);
   }
 
   
