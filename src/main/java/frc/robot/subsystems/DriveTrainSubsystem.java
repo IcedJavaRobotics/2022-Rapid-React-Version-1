@@ -127,10 +127,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
       speedMod = 1;
     }
 
-    moveMotor( speedMod * ensureRange(X + Y + R), frontLeftTalon);
-    moveMotor( speedMod * ensureRange(X - Y + R), backLeftTalon);
-    moveMotor( speedMod * ensureRange(X - Y - R), frontRightTalon);
-    moveMotor( speedMod * ensureRange(X + Y - R), backRightTalon);
+    moveMotor( speedMod * ensureRange(Y + X + R), frontLeftTalon);
+    moveMotor( speedMod * ensureRange(Y - X + R), backLeftTalon);
+    moveMotor( speedMod * ensureRange(Y - X - R), frontRightTalon);
+    moveMotor( speedMod * ensureRange(Y + X - R), backRightTalon);
 
     // moveMotor( (1 * ((X / Math.abs(X)) * (X * X)) + ((Y / Math.abs(Y)) * (Y * Y)) + ((R / Math.abs(R)) * (R * R))), frontLeftTalon );
     // moveMotor( (1 * ((X / Math.abs(X)) * (X * X)) - ((Y / Math.abs(Y)) * (Y * Y)) + ((R / Math.abs(R)) * (R * R))), backLeftTalon );
