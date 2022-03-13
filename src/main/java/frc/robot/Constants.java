@@ -17,14 +17,15 @@ public final class Constants {
     // Buttons
     public static final int ARMS_UP_BUTTON = 4;
     public static final int ARMS_DOWN_BUTTON = 6;
-    public static final int OUTTAKE_BUTTON = 3;
-    public static final int INTAKE_BUTTON = 5;
+    public static final int OUTTAKE_BUTTON = 5;
+    public static final int INTAKE_BUTTON = 3;
     public static final int ELEVATOR_UP_BUTTON = 9;
     public static final int ELEVATOR_DOWN_BUTTON = 10;
     public static final int SHOOTER_BUTTON = 1;
     public static final int CLIMBER_UP_BUTTON = 7;
     public static final int CLIMBER_DOWN_BUTTON = 8;
     public static final int BLINKIN_BUTTON = 11;
+    public static final int INTAKE_SHOOT = 12;
 
     //DriveTrain
     public static final int FRONT_LEFT_TALON = 3;
@@ -46,7 +47,7 @@ public final class Constants {
 
     //Intake
     public static final int INTAKE_VICTOR = 11;
-    public static final double INTAKE_SPEED = 0.5;
+    public static final double INTAKE_SPEED = 0.8;
 
     //Arms
     public static final int LEFT_ARM = 5;
@@ -55,12 +56,12 @@ public final class Constants {
 
     //Elevator
     public static final int ELEVATOR_VICTOR = 10;
-    public static final double ELEVATOR_SPEED = 0.2;
+    public static final double ELEVATOR_SPEED = 0.6;
 
     //Shooter
     public static final int BLINKIN_SPARK = 0;          //blinkin
     public static final int SHOOTER_VICTOR = 7;          //tbd
-    public static final double SHOOTER_SPEED = 0.2;
+    public static final double SHOOTER_SPEED = 0.5;
 
     //Climber
     public static final int CLIMBER_LEFT_MOTOR = 8;

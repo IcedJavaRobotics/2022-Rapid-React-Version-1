@@ -86,7 +86,16 @@ public class RobotContainer {
       .whileHeld(new ClimberDownCommand(climberSubsystem));
 
       new JoystickButton(flightStick, Constants.BLINKIN_BUTTON) //Fill in number right now
-      .whileHeld(new BlinkinCommand(shooterSubsystem));      
+      .whileHeld(new BlinkinCommand(shooterSubsystem));     
+      
+      new JoystickButton(flightStick, Constants.INTAKE_SHOOT)
+      .whileHeld(new ShooterCommand(shooterSubsystem));
+
+      new JoystickButton(flightStick, Constants.INTAKE_SHOOT)
+      .whileHeld(new ElevatorUpCommand(elevatorSubsystem));
+
+      new JoystickButton(flightStick, Constants.INTAKE_SHOOT)
+      .whileHeld(new IntakeCommand(intakeSubsystem));
 
     }
 
