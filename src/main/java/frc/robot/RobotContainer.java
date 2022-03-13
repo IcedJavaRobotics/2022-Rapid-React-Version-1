@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.IntakeCommand;
+import frc.robot.commands.IntakeShootCommand;
 import frc.robot.commands.OuttakeCommand;
 import frc.robot.commands.ShooterCommand;
 import frc.robot.commands.ArmsUpCommand;
@@ -58,25 +59,25 @@ public class RobotContainer {
 
     configureButtonBindings(); {
 
-      new JoystickButton(flightStick, Constants.ARMS_UP_BUTTON)
+      new JoystickButton(flightStick2, Constants.ARMS_UP_BUTTON)
       .whileHeld(new ArmsUpCommand(armsSubsystem));
 
-      new JoystickButton(flightStick, Constants.ARMS_DOWN_BUTTON)
+      new JoystickButton(flightStick2, Constants.ARMS_DOWN_BUTTON)
       .whileHeld(new ArmsDownCommand(armsSubsystem));
 
-      new JoystickButton(flightStick, Constants.INTAKE_BUTTON)
+      new JoystickButton(flightStick2, Constants.INTAKE_BUTTON)
       .whileHeld(new IntakeCommand(intakeSubsystem));
 
-      new JoystickButton(flightStick, Constants.OUTTAKE_BUTTON)
+      new JoystickButton(flightStick2, Constants.OUTTAKE_BUTTON)
       .whileHeld(new OuttakeCommand(intakeSubsystem));
 
-      new JoystickButton(flightStick, Constants.ELEVATOR_UP_BUTTON)
+      new JoystickButton(flightStick2, Constants.ELEVATOR_UP_BUTTON)
       .whileHeld(new ElevatorUpCommand(elevatorSubsystem));
 
-      new JoystickButton(flightStick, Constants.ELEVATOR_DOWN_BUTTON)
+      new JoystickButton(flightStick2, Constants.ELEVATOR_DOWN_BUTTON)
       .whileHeld(new ElevatorDownCommand(elevatorSubsystem));
 
-      new JoystickButton(flightStick, Constants.SHOOTER_BUTTON) //1 is the trigger
+      new JoystickButton(flightStick2, Constants.SHOOTER_BUTTON) //1 is the trigger
       .whileHeld(new ShooterCommand(shooterSubsystem));
 
       new JoystickButton(flightStick, Constants.CLIMBER_UP_BUTTON)
@@ -85,17 +86,11 @@ public class RobotContainer {
       new JoystickButton(flightStick, Constants.CLIMBER_DOWN_BUTTON)
       .whileHeld(new ClimberDownCommand(climberSubsystem));
 
-      new JoystickButton(flightStick, Constants.BLINKIN_BUTTON) //Fill in number right now
-      .whileHeld(new BlinkinCommand(shooterSubsystem));     
-      
-      new JoystickButton(flightStick, Constants.INTAKE_SHOOT)
-      .whileHeld(new ShooterCommand(shooterSubsystem));
+      new JoystickButton(flightStick2, Constants.BLINKIN_BUTTON) //Fill in number right now
+      .whileHeld(new BlinkinCommand(shooterSubsystem));
 
-      new JoystickButton(flightStick, Constants.INTAKE_SHOOT)
-      .whileHeld(new ElevatorUpCommand(elevatorSubsystem));
-
-      new JoystickButton(flightStick, Constants.INTAKE_SHOOT)
-      .whileHeld(new IntakeCommand(intakeSubsystem));
+      new JoystickButton(flightStick2, Constants.INTAKE_SHOOT)
+      .whileHeld(new IntakeShootCommand(shooterSubsystem, elevatorSubsystem, intakeSubsystem));
 
     }
 
