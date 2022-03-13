@@ -42,7 +42,7 @@ public class ArmsSubsystem extends SubsystemBase {
 
     if (bottomLeftLimit.get() == false) {
 
-      leftArmMotor.set(ControlMode.PercentOutput, Constants.INTAKE_SPEED);
+      leftArmMotor.set(ControlMode.PercentOutput, Constants.ARM_SPEED);
       leftPosition += leftMotorCounter.get();
       leftMotorCounter.reset();
 
@@ -55,7 +55,7 @@ public class ArmsSubsystem extends SubsystemBase {
 
     if (bottomRightLimit.get() == false) {
 
-      rightArmMotor.set(ControlMode.PercentOutput, Constants.INTAKE_SPEED);
+      rightArmMotor.set(ControlMode.PercentOutput, Constants.ARM_SPEED);
       rightPosition += rightMotorCounter.get();
       rightMotorCounter.reset();
 
@@ -72,7 +72,7 @@ public class ArmsSubsystem extends SubsystemBase {
 
     if (topLeftLimit.get() == false) {
 
-      leftArmMotor.set(ControlMode.PercentOutput, -Constants.INTAKE_SPEED);
+      leftArmMotor.set(ControlMode.PercentOutput, -Constants.ARM_SPEED);
       leftPosition -= leftMotorCounter.get();
       leftMotorCounter.reset();
 
@@ -84,7 +84,7 @@ public class ArmsSubsystem extends SubsystemBase {
 
     if (topRightLimit.get() == false) {
 
-      rightArmMotor.set(ControlMode.PercentOutput, -Constants.INTAKE_SPEED);
+      rightArmMotor.set(ControlMode.PercentOutput, -Constants.ARM_SPEED);
       rightPosition -= rightMotorCounter.get();
       rightMotorCounter.reset();
 

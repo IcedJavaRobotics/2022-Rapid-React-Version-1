@@ -25,7 +25,7 @@ public final class Constants {
     public static final int CLIMBER_UP_BUTTON = 7;
     public static final int CLIMBER_DOWN_BUTTON = 8;
     public static final int BLINKIN_BUTTON = 11;
-    
+
     //DriveTrain
     public static final int FRONT_LEFT_TALON = 3;
     public static final int BACK_LEFT_TALON = 2;
@@ -51,6 +51,7 @@ public final class Constants {
     //Arms
     public static final int LEFT_ARM = 5;
     public static final int RIGHT_ARM = 6;
+    public static final double ARM_SPEED = 0.5;
 
     //Elevator
     public static final int ELEVATOR_VICTOR = 10;
