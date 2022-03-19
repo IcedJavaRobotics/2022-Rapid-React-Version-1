@@ -13,9 +13,21 @@ import frc.robot.Constants;
 public class ElevatorSubsystem extends SubsystemBase {
   /** Creates a new ElevatorSubsystem. */
   
-  final VictorSPX elevatorVictor = new VictorSPX(Constants.ELEVATOR_VICTOR);
+  private VictorSPX elevatorVictor = new VictorSPX(Constants.ELEVATOR_VICTOR);
 
   public ElevatorSubsystem() {}
+
+  public void elevatorJoystick(double E) {
+    
+    if ( E >= 0.5 ) {
+      elevatorUp();
+    } else if ( E <= -0.5 ) {
+      elevatorDown();
+    } else {
+      elevatorStop();
+    }
+
+  }
 
   public void elevatorUp() {
 
