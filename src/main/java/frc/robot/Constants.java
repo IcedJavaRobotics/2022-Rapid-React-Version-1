@@ -15,17 +15,19 @@ package frc.robot;
 public final class Constants {
 
     // Buttons
-    public static final int ARMS_UP_BUTTON = 4;
-    public static final int ARMS_DOWN_BUTTON = 6;
-    public static final int OUTTAKE_BUTTON = 5;
+    public static final int ARMS_UP_BUTTON = 5;
+    public static final int ARMS_DOWN_BUTTON = 7;
+    public static final int ARMS_UP_BUTTON2 = 1;
+    public static final int OUTTAKE_BUTTON = 2;
     public static final int INTAKE_BUTTON = 3;
-    public static final int ELEVATOR_UP_BUTTON = 9;
-    public static final int ELEVATOR_DOWN_BUTTON = 10;
-    public static final int SHOOTER_BUTTON = 1;
-    public static final int CLIMBER_UP_BUTTON = 7;
-    public static final int CLIMBER_DOWN_BUTTON = 8;
-    public static final int BLINKIN_BUTTON = 11;
-    public static final int INTAKE_SHOOT = 12;
+    public static final int ELEVATOR_UP_BUTTON = 4;
+    public static final int ELEVATOR_DOWN_BUTTON = 1;
+    public static final int SHOOTER_BUTTON = 8;
+    public static final int UNSHOOTER_BUTTON = 6;
+    public static final int CLIMBER_UP_BUTTON = 1;
+    public static final int CLIMBER_DOWN_BUTTON = 2;
+    public static final int BLINKIN_BUTTON = 9;
+    public static final int INTAKE_SHOOT = 10;
 
     //DriveTrain
     public static final int FRONT_LEFT_TALON = 3;
@@ -33,15 +35,16 @@ public final class Constants {
     public static final int FRONT_RIGHT_TALON = 1;
     public static final int BACK_RIGHT_TALON = 4;
     public static final int ROTATIONAL_CONSTANT = 2048;
-    public static final double RAMP_UP_TIME = 3;                // in seconds
+    public static final double RAMP_UP_TIME = 1.5;                // in seconds
     public static final int AUTO_DISTANCE_FORWARD = 30;         // in inches
     public static final int AUTO_DISTANCE_BACKWARDS = 30;       // in inches
     public static final double ELEVATOR_TIME = 5;               // in seconds
 
     //Controllers
-    //public static final int CONTROLLER = 1;
+    
     public static final int JOYSTICK = 0;
-    public static final int JOYSTICK2 = 1;
+    public static final int DRIVER_STATION = 1;
+    public static final int CONTROLLER = 2;
         // ^ these indicate the spot used on the driverstation ^
     public static final double DEADZONE = 0.2;
 
@@ -52,7 +55,7 @@ public final class Constants {
     //Arms
     public static final int LEFT_ARM = 5;
     public static final int RIGHT_ARM = 6;
-    public static final double ARM_SPEED = 0.5;
+    public static final double ARM_SPEED = 1;
 
     //Elevator
     public static final int ELEVATOR_VICTOR = 10;
@@ -61,13 +64,15 @@ public final class Constants {
     //Shooter
     public static final int BLINKIN_SPARK = 0;          //blinkin
     public static final int SHOOTER_VICTOR = 7;          //tbd
-    public static final double SHOOTER_SPEED = 0.5;
+    public static final double SHOOTER_SPEED = 0.6;
+    public static final double UNSHOOTER_SPEED = 0.2;
 
     //Climber
-    public static final int CLIMBER_LEFT_MOTOR = 8;
-    public static final int CLIMBER_RIGHT_MOTOR = 9;
-    public static final double CLIMBER_SPEED = 0.2;
-    public static final int CLIMBER_LEFT_LIMIT_SWITCH = 6;
-    public static final int CLIMBER_RIGHT_LIMIT_SWITCH = 7;
+    public static final int CLIMBER_LEFT_MOTOR = 9;
+    public static final int CLIMBER_RIGHT_MOTOR = 8;
+    public static final double LEFT_CLIMBER_SPEED = 0.53;
+    public static final double RIGHT_CLIMBER_SPEED = 0.5;
+    public static final int CLIMBER_LEFT_LIMIT_SWITCH = 7;
+    public static final int CLIMBER_RIGHT_LIMIT_SWITCH = 6;
 
 }

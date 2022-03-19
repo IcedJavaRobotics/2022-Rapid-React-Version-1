@@ -6,7 +6,6 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
-
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -25,8 +24,8 @@ public class DriveTrainSubsystem extends SubsystemBase {
   public DriveTrainSubsystem() {
 
     frontLeftTalon.setInverted(true);
-    backLeftTalon.setInverted(false);
-    frontRightTalon.setInverted(true);
+    backLeftTalon.setInverted(true);
+    frontRightTalon.setInverted(false);
     backRightTalon.setInverted(false);
 
   }
@@ -62,8 +61,8 @@ public class DriveTrainSubsystem extends SubsystemBase {
   public void spinMotorForward() {
 
     frontLeftTalon.set(ControlMode.PercentOutput, 0.5);
-    backLeftTalon.set(ControlMode.PercentOutput, -0.5);
-    frontRightTalon.set(ControlMode.PercentOutput, -0.5);
+    backLeftTalon.set(ControlMode.PercentOutput, 0.5);
+    frontRightTalon.set(ControlMode.PercentOutput, 0.5);
     backRightTalon.set(ControlMode.PercentOutput, 0.5);
 
     SmartDashboard.putNumber("Talon 4 Velocity", ( frontLeftTalon.getSelectedSensorVelocity() / Constants.ROTATIONAL_CONSTANT ) );
@@ -81,8 +80,8 @@ public class DriveTrainSubsystem extends SubsystemBase {
   public void spinMotorBackwards() {
 
     frontLeftTalon.set(ControlMode.PercentOutput, -0.5);
-    backLeftTalon.set(ControlMode.PercentOutput, 0.5);
-    frontRightTalon.set(ControlMode.PercentOutput, 0.5);
+    backLeftTalon.set(ControlMode.PercentOutput, -0.5);
+    frontRightTalon.set(ControlMode.PercentOutput, -0.5);
     backRightTalon.set(ControlMode.PercentOutput, -0.5);
 
     SmartDashboard.putNumber("Talon 4 Velocity", ( frontLeftTalon.getSelectedSensorVelocity() / Constants.ROTATIONAL_CONSTANT ) );
@@ -110,27 +109,35 @@ public class DriveTrainSubsystem extends SubsystemBase {
   }
 
   public double ensureRange( double val ) {
+
     return Math.min(Math.max(val, -1), 1);
+
   }
 
-  public void mecanumDrive( double R, double Y, double X ) {
+  public void mecanumDrive( double X, double Y, double R, double Z ) {
 
-    //Z = ( Z*0.4 ) + 0.6;
+    Z = ( -Z + 1 )/2;
 
     if ( Math.abs(X) + Math.abs(Y) + Math.abs(R) == 0 ) {
+
       driveTime = Timer.getMatchTime();
+    
     }
 
     if ( Timer.getMatchTime() - driveTime <= Constants.RAMP_UP_TIME ) {
-      speedMod = (Timer.getMatchTime() - driveTime) / Constants.RAMP_UP_TIME;
+
+      speedMod = -1 * ((0.5 * (driveTime - Timer.getMatchTime()) / Constants.RAMP_UP_TIME) + 0.5) ;
+
     } else {
+
       speedMod = 1;
+
     }
 
-    moveMotor( speedMod * ensureRange(Y + X + R), frontLeftTalon);
-    moveMotor( speedMod * ensureRange(Y - X + R), backLeftTalon);
-    moveMotor( speedMod * ensureRange(Y - X - R), frontRightTalon);
-    moveMotor( speedMod * ensureRange(Y + X - R), backRightTalon);
+    moveMotor( Z * speedMod * ensureRange(Y + X + R), frontLeftTalon);
+    moveMotor( Z * speedMod * ensureRange(Y - X + R), backLeftTalon);
+    moveMotor( Z * speedMod * ensureRange(Y - X - R), frontRightTalon);
+    moveMotor( Z * speedMod * ensureRange(Y + X - R), backRightTalon);
 
     // moveMotor( (1 * ((X / Math.abs(X)) * (X * X)) + ((Y / Math.abs(Y)) * (Y * Y)) + ((R / Math.abs(R)) * (R * R))), frontLeftTalon );
     // moveMotor( (1 * ((X / Math.abs(X)) * (X * X)) - ((Y / Math.abs(Y)) * (Y * Y)) + ((R / Math.abs(R)) * (R * R))), backLeftTalon );
@@ -142,6 +149,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
     SmartDashboard.putNumber("Talon 4 Velocity", ( frontLeftTalon.getSelectedSensorVelocity() / Constants.ROTATIONAL_CONSTANT ) );
     SmartDashboard.putNumber("Talon 4 Position", ( frontLeftTalon.getSelectedSensorPosition() / Constants.ROTATIONAL_CONSTANT ) );
+    SmartDashboard.putNumber("Magnitude", ( Z ) );
 
   }
 

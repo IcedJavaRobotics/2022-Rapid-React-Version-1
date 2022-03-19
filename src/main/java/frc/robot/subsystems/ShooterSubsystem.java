@@ -45,6 +45,12 @@ public class ShooterSubsystem extends SubsystemBase {
 
   }
 
+  public void ballUnShoot() {
+
+    shooterMotor.set(ControlMode.PercentOutput, -Constants.UNSHOOTER_SPEED);
+
+  }
+
   public void shootStop() {
 
     shooterMotor.set(ControlMode.PercentOutput, 0);

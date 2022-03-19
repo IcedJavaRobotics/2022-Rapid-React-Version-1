@@ -13,11 +13,19 @@ import frc.robot.Constants;
 public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
 
-  private VictorSPX intakeMotor;
+  private VictorSPX intakeMotor = new VictorSPX(Constants.INTAKE_VICTOR);
 
-  public IntakeSubsystem() {
+  public IntakeSubsystem() {}
 
-    intakeMotor = new VictorSPX(Constants.INTAKE_VICTOR);
+  public void intakeJoystick(double I) {
+
+    if ( I >= 0.5 ) {
+      intake();
+    } else if ( I <= -0.5 ) {
+      outtake();
+    } else {
+      intakeStop();
+    }
 
   }
 

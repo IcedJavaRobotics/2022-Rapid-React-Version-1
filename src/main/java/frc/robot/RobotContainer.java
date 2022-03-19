@@ -12,6 +12,7 @@ import frc.robot.commands.IntakeCommand;
 import frc.robot.commands.IntakeShootCommand;
 import frc.robot.commands.OuttakeCommand;
 import frc.robot.commands.ShooterCommand;
+import frc.robot.commands.UnShootCommand;
 import frc.robot.commands.ArmsUpCommand;
 import frc.robot.commands.BlinkinCommand;
 import frc.robot.commands.ClimberDownCommand;
@@ -45,10 +46,9 @@ public class RobotContainer {
   private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   private final ClimberSubsystem climberSubsystem = new ClimberSubsystem();
 
-  //XboxController xboxController = new XboxController(Constants.CONTROLLER);
+  XboxController xboxController = new XboxController(Constants.CONTROLLER);
   Joystick flightStick = new Joystick(Constants.JOYSTICK);
-  Joystick flightStick2 = new Joystick(Constants.JOYSTICK2);
-  // Joystick driverStation = new Joystick(Constants.DRIVER_STATION);
+  Joystick driverStation = new Joystick(Constants.DRIVER_STATION);
 
   // private final ExampleCommand m_autoCommand = new ExampleCommand(talonFXTestSubsystem);
   private final ExampleCommand m_autoCommand = new ExampleCommand(driveTrainSubsystem, shooterSubsystem, elevatorSubsystem);
@@ -59,43 +59,57 @@ public class RobotContainer {
 
     configureButtonBindings(); {
 
-      new JoystickButton(flightStick2, Constants.ARMS_UP_BUTTON)
+      new JoystickButton(flightStick, Constants.ARMS_UP_BUTTON2)
       .whileHeld(new ArmsUpCommand(armsSubsystem));
 
-      new JoystickButton(flightStick2, Constants.ARMS_DOWN_BUTTON)
+      new JoystickButton(xboxController, Constants.ARMS_UP_BUTTON)
+      .whileHeld(new ArmsUpCommand(armsSubsystem));
+
+      new JoystickButton(xboxController, Constants.ARMS_DOWN_BUTTON)
       .whileHeld(new ArmsDownCommand(armsSubsystem));
 
-      new JoystickButton(flightStick2, Constants.INTAKE_BUTTON)
+      new JoystickButton(xboxController, Constants.INTAKE_BUTTON)
       .whileHeld(new IntakeCommand(intakeSubsystem));
 
-      new JoystickButton(flightStick2, Constants.OUTTAKE_BUTTON)
+      new JoystickButton(xboxController, Constants.OUTTAKE_BUTTON)
       .whileHeld(new OuttakeCommand(intakeSubsystem));
 
-      new JoystickButton(flightStick2, Constants.ELEVATOR_UP_BUTTON)
+      new JoystickButton(xboxController, Constants.ELEVATOR_UP_BUTTON)
       .whileHeld(new ElevatorUpCommand(elevatorSubsystem));
 
-      new JoystickButton(flightStick2, Constants.ELEVATOR_DOWN_BUTTON)
+      new JoystickButton(xboxController, Constants.ELEVATOR_DOWN_BUTTON)
       .whileHeld(new ElevatorDownCommand(elevatorSubsystem));
 
-      new JoystickButton(flightStick2, Constants.SHOOTER_BUTTON) //1 is the trigger
+      new JoystickButton(xboxController, Constants.SHOOTER_BUTTON) //1 is the trigger
       .whileHeld(new ShooterCommand(shooterSubsystem));
 
-      new JoystickButton(flightStick, Constants.CLIMBER_UP_BUTTON)
+      new JoystickButton(xboxController, Constants.UNSHOOTER_BUTTON)
+      .whileHeld(new UnShootCommand(shooterSubsystem));
+
+      new JoystickButton(driverStation, Constants.CLIMBER_UP_BUTTON)
       .whileHeld(new ClimberUpCommand(climberSubsystem));
 
-      new JoystickButton(flightStick, Constants.CLIMBER_DOWN_BUTTON)
+      new JoystickButton(driverStation, Constants.CLIMBER_DOWN_BUTTON)
       .whileHeld(new ClimberDownCommand(climberSubsystem));
 
-      new JoystickButton(flightStick2, Constants.BLINKIN_BUTTON) //Fill in number right now
+      new JoystickButton(driverStation, Constants.BLINKIN_BUTTON) //Fill in number right now
       .whileHeld(new BlinkinCommand(shooterSubsystem));
 
-      new JoystickButton(flightStick2, Constants.INTAKE_SHOOT)
+      new JoystickButton(xboxController, Constants.INTAKE_SHOOT)
       .whileHeld(new IntakeShootCommand(shooterSubsystem, elevatorSubsystem, intakeSubsystem));
 
     }
 
     driveTrainSubsystem.setDefaultCommand(
-      new RunCommand(() -> driveTrainSubsystem.mecanumDrive(-getJoystickX(), getJoystickY(), -getJoystickTwist()), driveTrainSubsystem)
+      new RunCommand(() -> driveTrainSubsystem.mecanumDrive(-getJoystickX(), getJoystickY(), -getJoystickTwist(), flightStick.getThrottle()), driveTrainSubsystem)
+    );
+
+    intakeSubsystem.setDefaultCommand(
+      new RunCommand(() -> intakeSubsystem.intakeJoystick( -xboxController.getLeftY()), intakeSubsystem)
+    );
+
+    elevatorSubsystem.setDefaultCommand(
+      new RunCommand(() -> elevatorSubsystem.elevatorJoystick( xboxController.getRightY() ), elevatorSubsystem)
     );
 
   }

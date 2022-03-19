@@ -5,11 +5,13 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 //import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 //import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -22,43 +24,74 @@ public class ClimberSubsystem extends SubsystemBase {
   DigitalInput climberRightLimitSwitch = new DigitalInput(Constants.CLIMBER_RIGHT_LIMIT_SWITCH);
 
   public ClimberSubsystem() {
+
     climberLeftMotor = new TalonSRX(Constants.CLIMBER_LEFT_MOTOR);
     climberRightMotor = new TalonSRX(Constants.CLIMBER_RIGHT_MOTOR);
+
+    climberRightMotor.setNeutralMode(NeutralMode.Brake);
+    climberLeftMotor.setNeutralMode(NeutralMode.Brake);
+
+    climberRightMotor.setInverted(true);
+    
   }
 
   public void climberUp(){
     
-    if(climberLeftMotor.getSelectedSensorPosition()<= 5000){
-      climberLeftMotor.set(ControlMode.PercentOutput, Constants.CLIMBER_SPEED);
-    }else{
+    if(climberLeftMotor.getSelectedSensorPosition()<= 18000){
+
+      climberLeftMotor.set(ControlMode.PercentOutput, Constants.LEFT_CLIMBER_SPEED);
+
+    } else {
+
       climberLeftMotor.set(ControlMode.PercentOutput, 0);
+
     }
-    if(climberRightMotor.getSelectedSensorPosition()<= 5000){
-      climberRightMotor.set(ControlMode.PercentOutput, Constants.CLIMBER_SPEED);
-    }else{
+
+    if(climberRightMotor.getSelectedSensorPosition()<= 17000){
+
+      climberRightMotor.set(ControlMode.PercentOutput, Constants.RIGHT_CLIMBER_SPEED);
+
+    } else {
+
       climberRightMotor.set(ControlMode.PercentOutput, 0);
+
     }
     
+    SmartDashboard.putNumber("Talon Left Climber", ( climberLeftMotor.getSelectedSensorPosition()));
+    SmartDashboard.putNumber("Talon Right Climber", ( climberRightMotor.getSelectedSensorPosition()));
+
   }
 
   public void climberDown(){
+
     if(climberLeftLimitSwitch.get() == false) {
-      climberLeftMotor.set(ControlMode.PercentOutput, - Constants.CLIMBER_SPEED);
-    }else{
+
+      climberLeftMotor.set(ControlMode.PercentOutput, - Constants.LEFT_CLIMBER_SPEED);
+
+    } else {
+
       climberLeftMotor.set(ControlMode.PercentOutput, 0);
       climberLeftMotor.setSelectedSensorPosition(0);
+
     }
+
     if(climberRightLimitSwitch.get() == false) {
-      climberRightMotor.set(ControlMode.PercentOutput, - Constants.CLIMBER_SPEED);
-    }else{
+
+      climberRightMotor.set(ControlMode.PercentOutput, - Constants.RIGHT_CLIMBER_SPEED);
+
+    } else {
+
       climberRightMotor.set(ControlMode.PercentOutput, 0);
       climberRightMotor.setSelectedSensorPosition(0);
+
     }
   }
 
-  public void climberStop(){
+  public void climberStop() {
+
     climberLeftMotor.set(ControlMode.PercentOutput, 0);
     climberRightMotor.set(ControlMode.PercentOutput, 0);
+    
   }
 
   

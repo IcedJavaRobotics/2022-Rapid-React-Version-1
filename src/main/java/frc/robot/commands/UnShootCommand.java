@@ -5,32 +5,27 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ElevatorSubsystem;
-import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
-public class IntakeShootCommand extends CommandBase {
+public class UnShootCommand extends CommandBase {
+  /** Creates a new UnShootCommand. */
 
   private final ShooterSubsystem shooterSubsystem;
-  private final ElevatorSubsystem elevatorSubsystem;
-  private final IntakeSubsystem intakeSubsystem;
 
-  public IntakeShootCommand( ShooterSubsystem sSubsystem, ElevatorSubsystem eSubsystem, IntakeSubsystem iSubsystem) {
-    
-    shooterSubsystem = sSubsystem;
-    elevatorSubsystem = eSubsystem;
-    intakeSubsystem = iSubsystem;
-    addRequirements(sSubsystem);
-    addRequirements(eSubsystem);
-    addRequirements(iSubsystem);
+  public UnShootCommand( ShooterSubsystem subsystem ) {
+  
+    shooterSubsystem = subsystem;
+    addRequirements( shooterSubsystem );
 
   }
+
+
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
 
-    shooterSubsystem.checkY();
+
 
   }
 
@@ -38,9 +33,7 @@ public class IntakeShootCommand extends CommandBase {
   @Override
   public void execute() {
 
-    //shooterSubsystem.ballShoot();
-    elevatorSubsystem.elevatorUp();
-    intakeSubsystem.intake();
+    shooterSubsystem.ballUnShoot();
 
   }
 
@@ -48,9 +41,7 @@ public class IntakeShootCommand extends CommandBase {
   @Override
   public void end(boolean interrupted) {
 
-    //shooterSubsystem.shootStop();
-    elevatorSubsystem.elevatorStop();
-    intakeSubsystem.intakeStop();
+    shooterSubsystem.shootStop();
 
   }
 

@@ -18,7 +18,7 @@ public class ArmsSubsystem extends SubsystemBase {
   private VictorSPX leftArmMotor;
   public double leftPosition = 0;
   public double rightPosition = 0;
-  Counter leftMotorCounter = new Counter(new DigitalInput(0));
+  Counter leftMotorCounter = new Counter(new DigitalInput(9));
   Counter rightMotorCounter = new Counter(new DigitalInput(1));
   DigitalInput topLeftLimit = new DigitalInput(2);
   DigitalInput bottomLeftLimit = new DigitalInput(3);
