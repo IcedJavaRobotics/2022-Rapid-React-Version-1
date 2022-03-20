@@ -25,6 +25,7 @@ public class UpperHubCommand extends CommandBase {
   public void initialize() {
 
     shooterSubsystem.checkY();
+    shooterSubsystem.falseMaxSpeed();
 
   }
 
@@ -41,6 +42,7 @@ public class UpperHubCommand extends CommandBase {
   public void end(boolean interrupted) {
 
     shooterSubsystem.shootStop();
+    shooterSubsystem.falseMaxSpeed();
 
   }
 

@@ -12,7 +12,7 @@ public class ElevatorUpCommand extends CommandBase {
 
   private final ElevatorSubsystem elevatorSubsystem;
 
-  public ElevatorUpCommand( ElevatorSubsystem subsystem ) {
+  public ElevatorUpCommand( ElevatorSubsystem subsystem) {
 
     elevatorSubsystem = subsystem;
     addRequirements( elevatorSubsystem );
@@ -26,7 +26,7 @@ public class ElevatorUpCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
+    
     elevatorSubsystem.elevatorUp();
 
   }

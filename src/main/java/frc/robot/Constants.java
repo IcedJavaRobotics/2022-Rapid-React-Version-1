@@ -65,6 +65,7 @@ public final class Constants {
     //Elevator
     public static final int ELEVATOR_VICTOR = 10;
     public static final double ELEVATOR_SPEED = 0.6;
+    public static final int BALL_DETECT = 9;                    // DIO
 
     //Shooter
     public static final int BLINKIN_SPARK = 0;          //blinkin
@@ -73,6 +74,7 @@ public final class Constants {
     public static final double UPPER_SHOOTER_SPEED = 0.42;
     public static final double LOWER_SHOOTER_SPEED = 0.22;
     public static final double UNSHOOTER_SPEED = 0.6;
+    public static final double SHOOTER_MAX_SPEED_TIME = 2;  // seconds
 
     //Climber
     public static final int CLIMBER_LEFT_MOTOR = 9;

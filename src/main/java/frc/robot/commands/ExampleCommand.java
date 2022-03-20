@@ -4,12 +4,10 @@
 
 package frc.robot.commands;
 
-import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrainSubsystem;
 import frc.robot.subsystems.ElevatorSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
@@ -65,7 +63,7 @@ public class ExampleCommand extends CommandBase {
       e_subsystem.elevatorStop();
     }
 
-    if (Timer.getMatchTime() <= 1) {
+    if (Timer.getMatchTime() <= 2) {
       m_subsystem.autoReverse();
     }
 

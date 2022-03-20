@@ -7,6 +7,8 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -14,30 +16,57 @@ public class ElevatorSubsystem extends SubsystemBase {
   /** Creates a new ElevatorSubsystem. */
   
   private VictorSPX elevatorVictor = new VictorSPX(Constants.ELEVATOR_VICTOR);
+  private DigitalInput ballDetect = new DigitalInput(Constants.BALL_DETECT);
+  private ShooterSubsystem shooterSubsystem;
 
   public ElevatorSubsystem() {}
 
-  public void elevatorJoystick(double E) {
+  public void elevatorJoystick(double E, ShooterSubsystem shooterSubsystem) {
     
     if ( E >= 0.5 ) {
-      elevatorVictor.set(ControlMode.PercentOutput, Constants.ELEVATOR_SPEED);
+
+      if ( ballDetect.get() == true ) {             // this is when the button is pressed and the ball is there
+
+        if (shooterSubsystem.maxSpeed == true) {    // this is when the shooter is at max speed
+
+          elevatorUp();
+
+        } else {
+
+          elevatorStop();
+
+        }
+
+      }  else {
+
+        elevatorUp();
+
+      }
+
     } else if ( E <= -0.5 ) {
-      elevatorVictor.set(ControlMode.PercentOutput, - Constants.ELEVATOR_SPEED);
+      
+      elevatorDown();
+
     } else {
-      elevatorVictor.set(ControlMode.PercentOutput, 0);
+
+      elevatorStop();
+
     }
+
+    SmartDashboard.putBoolean("Ball detected = ", ballDetect.get());
 
   }
 
   public void elevatorUp() {
-
+  
     elevatorVictor.set(ControlMode.PercentOutput, Constants.ELEVATOR_SPEED);
 
   }
 
   public void elevatorDown() {
-
+    
     elevatorVictor.set(ControlMode.PercentOutput, - Constants.ELEVATOR_SPEED);
+    
 
   }
 

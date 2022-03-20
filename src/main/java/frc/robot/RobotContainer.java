@@ -119,7 +119,7 @@ public class RobotContainer {
     );
 
     elevatorSubsystem.setDefaultCommand(
-      new RunCommand(() -> elevatorSubsystem.elevatorJoystick( -xboxController.getRightTriggerAxis()), elevatorSubsystem)
+      new RunCommand(() -> elevatorSubsystem.elevatorJoystick( -xboxController.getRightTriggerAxis(), shooterSubsystem), elevatorSubsystem)
     );
 
     /*

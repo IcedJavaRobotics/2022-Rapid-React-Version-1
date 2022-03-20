@@ -23,6 +23,7 @@ public class ShooterCommand extends CommandBase {
   public void initialize() {
 
     shooterSubsystem.checkY();
+    shooterSubsystem.falseMaxSpeed();
     
   }
 
@@ -39,6 +40,7 @@ public class ShooterCommand extends CommandBase {
   public void end(boolean interrupted) {
 
     shooterSubsystem.shootStop();
+    shooterSubsystem.falseMaxSpeed();
 
   }
 

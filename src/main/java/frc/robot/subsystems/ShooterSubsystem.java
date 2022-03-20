@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -16,6 +17,11 @@ public class ShooterSubsystem extends SubsystemBase {
   
   private Spark shooterBlinkin = new Spark (Constants.BLINKIN_SPARK); //Declares that shooterBlinkin is a spark and gives it the port
   final VictorSPX shooterMotor = new VictorSPX(Constants.SHOOTER_VICTOR);
+  public boolean maxSpeed;
+  double x;
+  double time;
+  double startTime;
+  
   /** Creates a new ShooterSubsystem. */
 
   public ShooterSubsystem() {
@@ -32,6 +38,13 @@ public class ShooterSubsystem extends SubsystemBase {
       
   }
 
+  public void falseMaxSpeed() {
+
+    maxSpeed = false;
+    x = 0;
+    
+  }
+
   public void autoShoot() {
   
     shooterMotor.set(ControlMode.PercentOutput, Constants.AUTO_SHOOTER_SPEED);
@@ -43,6 +56,16 @@ public class ShooterSubsystem extends SubsystemBase {
 
     shooterMotor.set(ControlMode.PercentOutput, Constants.UPPER_SHOOTER_SPEED);
     shooterBlinkin.set(-0.99); //When the shooter activates it turns rainbow
+  
+    x = x + 1;
+
+    if ( x == 1 ) {
+      time = Timer.getMatchTime();
+    }
+
+    if (Timer.getMatchTime() - time >= Constants.SHOOTER_MAX_SPEED_TIME) {       // this is right if teleop time goes from 0s to more sec, if it's the opposite, referse time and getMatchTime
+      maxSpeed = true;
+    }
 
   }
 
@@ -50,6 +73,16 @@ public class ShooterSubsystem extends SubsystemBase {
 
     shooterMotor.set(ControlMode.PercentOutput, Constants.LOWER_SHOOTER_SPEED);
     shooterBlinkin.set(-0.99); //When the shooter activates it turns rainbow
+    
+    x = x + 1;
+
+    if ( x == 1 ) {
+      time = Timer.getMatchTime();
+    }
+
+    if (Timer.getMatchTime() - time >= Constants.SHOOTER_MAX_SPEED_TIME) {       // this is right if teleop time goes from 0s to more sec, if it's the opposite, referse time and getMatchTime
+      maxSpeed = true;
+    }
 
   }
 
