@@ -20,11 +20,11 @@ public class ElevatorSubsystem extends SubsystemBase {
   public void elevatorJoystick(double E) {
     
     if ( E >= 0.5 ) {
-      elevatorUp();
+      elevatorVictor.set(ControlMode.PercentOutput, Constants.ELEVATOR_SPEED);
     } else if ( E <= -0.5 ) {
-      elevatorDown();
+      elevatorVictor.set(ControlMode.PercentOutput, - Constants.ELEVATOR_SPEED);
     } else {
-      elevatorStop();
+      elevatorVictor.set(ControlMode.PercentOutput, 0);
     }
 
   }

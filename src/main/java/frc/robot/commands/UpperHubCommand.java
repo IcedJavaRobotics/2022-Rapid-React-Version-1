@@ -7,15 +7,17 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ShooterSubsystem;
 
-public class ShooterCommand extends CommandBase {
-  /** Creates a new ShooterCommand. */
+public class UpperHubCommand extends CommandBase {
+  /** Creates a new UpperHubCommand. */
 
   private final ShooterSubsystem shooterSubsystem;
 
-  public ShooterCommand( ShooterSubsystem subsystem ) {
-    shooterSubsystem = subsystem;
+  public UpperHubCommand( ShooterSubsystem subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
+
+    shooterSubsystem = subsystem;
     addRequirements( shooterSubsystem );
+
   }
 
   // Called when the command is initially scheduled.
@@ -23,14 +25,14 @@ public class ShooterCommand extends CommandBase {
   public void initialize() {
 
     shooterSubsystem.checkY();
-    
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
 
-    shooterSubsystem.ballLowerShoot();
+    shooterSubsystem.ballShoot(); 
 
   }
 

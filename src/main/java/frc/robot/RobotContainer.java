@@ -13,6 +13,7 @@ import frc.robot.commands.IntakeShootCommand;
 import frc.robot.commands.OuttakeCommand;
 import frc.robot.commands.ShooterCommand;
 import frc.robot.commands.UnShootCommand;
+import frc.robot.commands.UpperHubCommand;
 import frc.robot.commands.ArmsUpCommand;
 import frc.robot.commands.BlinkinCommand;
 import frc.robot.commands.ClimberDownCommand;
@@ -83,13 +84,22 @@ public class RobotContainer {
       new JoystickButton(xboxController, Constants.SHOOTER_BUTTON) //1 is the trigger
       .whileHeld(new ShooterCommand(shooterSubsystem));
 
-      new JoystickButton(xboxController, Constants.UNSHOOTER_BUTTON)
+      new JoystickButton(xboxController, Constants.LOWER_SHOOTER_BUTTON) //1 is the trigger
+      .whileHeld(new UpperHubCommand(shooterSubsystem));
+
+      new JoystickButton(driverStation, Constants.UNSHOOTER_BUTTON)
       .whileHeld(new UnShootCommand(shooterSubsystem));
 
       new JoystickButton(driverStation, Constants.CLIMBER_UP_BUTTON)
       .whileHeld(new ClimberUpCommand(climberSubsystem));
 
       new JoystickButton(driverStation, Constants.CLIMBER_DOWN_BUTTON)
+      .whileHeld(new ClimberDownCommand(climberSubsystem));
+      
+      new JoystickButton(flightStick, Constants.CLIMBER_UP_BUTTON2)
+      .whileHeld(new ClimberUpCommand(climberSubsystem));
+
+      new JoystickButton(flightStick, Constants.CLIMBER_DOWN_BUTTON2)
       .whileHeld(new ClimberDownCommand(climberSubsystem));
 
       new JoystickButton(driverStation, Constants.BLINKIN_BUTTON) //Fill in number right now
@@ -109,8 +119,14 @@ public class RobotContainer {
     );
 
     elevatorSubsystem.setDefaultCommand(
+      new RunCommand(() -> elevatorSubsystem.elevatorJoystick( -xboxController.getRightTriggerAxis()), elevatorSubsystem)
+    );
+
+    /*
+    elevatorSubsystem.setDefaultCommand(
       new RunCommand(() -> elevatorSubsystem.elevatorJoystick( xboxController.getRightY() ), elevatorSubsystem)
     );
+    */
 
   }
 

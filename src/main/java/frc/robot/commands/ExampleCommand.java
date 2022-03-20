@@ -54,6 +54,22 @@ public class ExampleCommand extends CommandBase {
   @Override
   public void execute() {
 
+    s_subsystem.autoShoot();
+    
+    if (Timer.getMatchTime() <= 13) {
+      e_subsystem.elevatorUp();
+    }
+
+    if (Timer.getMatchTime() <= 10) {
+      s_subsystem.shootStop();
+      e_subsystem.elevatorStop();
+    }
+
+    if (Timer.getMatchTime() <= 1) {
+      m_subsystem.autoReverse();
+    }
+
+    /*
     if ( x == 0 ) {
       m_subsystem.autoForward();
       s_subsystem.autoShoot();
@@ -83,7 +99,8 @@ public class ExampleCommand extends CommandBase {
     }
     SmartDashboard.putNumber("Match time equals", Timer.getMatchTime());
     System.out.println(x);
-    
+    */
+
   }
 
   // Called once the command ends or is interrupted.

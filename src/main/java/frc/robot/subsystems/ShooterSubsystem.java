@@ -34,13 +34,21 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public void autoShoot() {
   
-    ballShoot();
+    shooterMotor.set(ControlMode.PercentOutput, Constants.AUTO_SHOOTER_SPEED);
+    shooterBlinkin.set(-0.99); //When the shooter activates it turns rainbow
 
   }
 
   public void ballShoot() {
 
-    shooterMotor.set(ControlMode.PercentOutput, Constants.SHOOTER_SPEED);
+    shooterMotor.set(ControlMode.PercentOutput, Constants.UPPER_SHOOTER_SPEED);
+    shooterBlinkin.set(-0.99); //When the shooter activates it turns rainbow
+
+  }
+
+  public void ballLowerShoot() {
+
+    shooterMotor.set(ControlMode.PercentOutput, Constants.LOWER_SHOOTER_SPEED);
     shooterBlinkin.set(-0.99); //When the shooter activates it turns rainbow
 
   }

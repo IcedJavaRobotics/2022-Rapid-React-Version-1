@@ -44,26 +44,31 @@ public class DriveTrainSubsystem extends SubsystemBase {
       stopMotor();
       return true;
     }
+    if (Timer.getMatchTime() <= 15 ) {
+      return true;
+    }
     return false;
   }
 
   public void autoReverse() {
 
-    if ( frontLeftTalon.getSelectedSensorPosition() >= 0 ) {
-      // ((Constants.ROTATIONAL_CONSTANT / 2) * -Constants.AUTO_DISTANCE_BACKWARDS) 
+    spinMotorBackwards();
+
+    /*if ( frontLeftTalon.getSelectedSensorPosition() <= ((Constants.ROTATIONAL_CONSTANT / 2) * -Constants.AUTO_DISTANCE_BACKWARDS)) {
+      // frontLeftTalon.getSelectedSensorPosition() >= 0  
       spinMotorBackwards();
     } else {
       stopMotor();
     }
-
+    */
   }
 
   public void spinMotorForward() {
 
-    frontLeftTalon.set(ControlMode.PercentOutput, 0.5);
-    backLeftTalon.set(ControlMode.PercentOutput, 0.5);
-    frontRightTalon.set(ControlMode.PercentOutput, 0.5);
-    backRightTalon.set(ControlMode.PercentOutput, 0.5);
+    frontLeftTalon.set(ControlMode.PercentOutput, 0);
+    backLeftTalon.set(ControlMode.PercentOutput, 0);
+    frontRightTalon.set(ControlMode.PercentOutput, 0);
+    backRightTalon.set(ControlMode.PercentOutput, 0);
 
     SmartDashboard.putNumber("Talon 4 Velocity", ( frontLeftTalon.getSelectedSensorVelocity() / Constants.ROTATIONAL_CONSTANT ) );
     SmartDashboard.putNumber("Talon 4 Position", ( frontLeftTalon.getSelectedSensorPosition() / Constants.ROTATIONAL_CONSTANT ) );
@@ -79,10 +84,10 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
   public void spinMotorBackwards() {
 
-    frontLeftTalon.set(ControlMode.PercentOutput, -0.5);
-    backLeftTalon.set(ControlMode.PercentOutput, -0.5);
-    frontRightTalon.set(ControlMode.PercentOutput, -0.5);
-    backRightTalon.set(ControlMode.PercentOutput, -0.5);
+    frontLeftTalon.set(ControlMode.PercentOutput, Constants.AUTO_SPEED);
+    backLeftTalon.set(ControlMode.PercentOutput, Constants.AUTO_SPEED);
+    frontRightTalon.set(ControlMode.PercentOutput, Constants.AUTO_SPEED);
+    backRightTalon.set(ControlMode.PercentOutput, Constants.AUTO_SPEED);
 
     SmartDashboard.putNumber("Talon 4 Velocity", ( frontLeftTalon.getSelectedSensorVelocity() / Constants.ROTATIONAL_CONSTANT ) );
     SmartDashboard.putNumber("Talon 4 Position", ( frontLeftTalon.getSelectedSensorPosition() / Constants.ROTATIONAL_CONSTANT ) );
